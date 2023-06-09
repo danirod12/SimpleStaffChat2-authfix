@@ -17,6 +17,9 @@ public class ChatListener implements Listener {
     @EventHandler
     public void onStaffChat(ChatEvent event) {
         ProxiedPlayer player = (ProxiedPlayer) event.getSender();
+        if (player.getServer().getInfo().getName().contains("auth")) {
+            return;
+        }
 
         if (ToggleCommand.insc.contains(player.getUniqueId()) && !event.isCommand()) {
             if (!player.hasPermission(Permissions.STAFFCHAT_TOGGLE)) {
@@ -58,6 +61,9 @@ public class ChatListener implements Listener {
     @EventHandler
     public void onAdminChat(ChatEvent event) {
         ProxiedPlayer player = (ProxiedPlayer) event.getSender();
+        if (player.getServer().getInfo().getName().contains("auth")) {
+            return;
+        }
 
         if (AdminToggleCommand.inac.contains(player.getUniqueId()) && !event.isCommand()) {
             if (!player.hasPermission(Permissions.ADMINCHAT_TOGGLE)) {
@@ -99,6 +105,9 @@ public class ChatListener implements Listener {
     @EventHandler
     public void onDevChat(ChatEvent event) {
         ProxiedPlayer player = (ProxiedPlayer) event.getSender();
+        if (player.getServer().getInfo().getName().contains("auth")) {
+            return;
+        }
 
         if (DevToggleCommand.indc.contains(player.getUniqueId()) && !event.isCommand()) {
             if (!player.hasPermission(Permissions.DEVCHAT_TOGGLE)) {

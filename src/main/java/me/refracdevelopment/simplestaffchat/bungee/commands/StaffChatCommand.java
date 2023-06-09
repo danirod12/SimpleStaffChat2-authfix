@@ -23,6 +23,11 @@ public class StaffChatCommand extends Command {
     public void execute(CommandSender commandSender, String[] strings) {
         if (!Commands.STAFFCHAT_COMMAND_ENABLED) return;
 
+        if (commandSender instanceof ProxiedPlayer) {
+            if (((ProxiedPlayer) commandSender).getServer().getInfo().getName().contains("auth")) {
+                return;
+            }
+        }
         if (strings.length >= 1) {
             String format;
             String message = Joiner.on(" ").join(strings);
